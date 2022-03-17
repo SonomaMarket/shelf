@@ -17,7 +17,7 @@ The Shelf app displays a list of products on your store pages, helping you build
 
 ```json
   "dependencies": {
-    "vtex.shelf": "1.x",
+    "sonoma.shelf": "1.x",
   }
 ```
 

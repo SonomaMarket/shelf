@@ -77,7 +77,7 @@
           "default": "",
           "isLayout": false
         },
-        "productList": { "$ref": "app:vtex.shelf#/definitions/ProductList" },
+        "productList": { "$ref": "app:sonoma.shelf#/definitions/ProductList" },
         "hideUnavailableItems": {
           "title": "admin/editor.shelf.hideUnavailableItems",
           "type": "boolean",
