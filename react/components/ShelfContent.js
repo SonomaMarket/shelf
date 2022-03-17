@@ -157,8 +157,8 @@ class ShelfContent extends Component {
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
 
-    const roundedMinItems = this.roundHalf(minItemsPerPage)
-    const customPerPage = !isMobile && itemsPerPage
+    const roundedMinItems = this.roundHalf(2)
+    const customPerPage = !isMobile && 4
 
     return (
       <div

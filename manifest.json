@@ -1,7 +1,7 @@
 {
   "name": "shelf",
-  "vendor": "vtex",
-  "version": "1.47.2",
+  "vendor": "sonoma",
+  "version": "0.0.4",
   "title": "VTEX Shelf",
   "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
@@ -17,7 +17,7 @@
   "dependencies": {
     "vtex.native-types": "0.x",
     "vtex.store-components": "3.x",
-    "vtex.product-summary": "2.x",
+    "sonoma.product-summary": "0.x",
     "vtex.styleguide": "9.x",
     "vtex.slider": "0.x",
     "vtex.store-icons": "0.x",

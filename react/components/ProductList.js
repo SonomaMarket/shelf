@@ -16,8 +16,8 @@ import ProductListEventCaller from './ProductListEventCaller'
 const CSS_HANDLES = ['title']
 
 const DEFAULT_MAX_ITEMS = 10
-const DEFAULT_ITEMS_PER_PAGE = 5
-const DEFAULT_MIN_ITEMS_PER_PAGE = 1
+const DEFAULT_ITEMS_PER_PAGE = 4
+const DEFAULT_MIN_ITEMS_PER_PAGE = 2
 
 /**
  * Product List Component. Shows a collection of products.

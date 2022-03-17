@@ -8,7 +8,7 @@
       "height": 550
     },
     "content": {
-      "$ref": "app:vtex.shelf#/definitions/Shelf"
+      "$ref": "app:sonoma.shelf#/definitions/Shelf"
     }
   },
   "shelf.relatedProducts": {
