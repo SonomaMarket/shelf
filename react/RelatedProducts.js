@@ -14,6 +14,8 @@ import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 import { filterOutOfStock } from './utils/filterOutOfStock'
 
+import styles from "./components/shelf.css"
+
 const CSS_HANDLES = ['relatedProducts']
 
 const { ProductListProvider } = ProductListContext
@@ -93,12 +95,16 @@ const RelatedProducts = ({
           isMobile,
           trackingId,
         }
+        console.log('productListProps.products', productListProps.products);
         return (
+          <>
+          {productListProps.products.length > 0 && <h2 className={styles.product__shelf__title}>Produtos relacionados</h2>}
           <div className={handles.relatedProducts}>
             <ProductListProvider listName={trackingId}>
               <ProductList {...productListProps} />
             </ProductListProvider>
           </div>
+          </>
         )
       }}
     </Query>
