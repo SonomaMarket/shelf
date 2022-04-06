@@ -95,15 +95,14 @@ const RelatedProducts = ({
           isMobile,
           trackingId,
         }
-        console.log('productListProps.products', productListProps.products);
         return (
           <>
-          {productListProps.products.length > 0 && <h2 className={styles.product__shelf__title}>Produtos relacionados</h2>}
-          <div className={handles.relatedProducts}>
-            <ProductListProvider listName={trackingId}>
-              <ProductList {...productListProps} />
-            </ProductListProvider>
-          </div>
+            {productListProps.products.length > 0 && <h2 className={styles.product__shelf__title}>Produtos relacionados</h2>}
+            <div className={handles.relatedProducts}>
+              <ProductListProvider listName={trackingId}>
+                <ProductList {...productListProps} />
+              </ProductListProvider>
+            </div>
           </>
         )
       }}
