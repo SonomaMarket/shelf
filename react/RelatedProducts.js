@@ -13,6 +13,7 @@ import productRecommendationsQuery from './queries/productRecommendations.gql'
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 import { filterOutOfStock } from './utils/filterOutOfStock'
+import { checkValidHarmonization } from './utils/resolveHarmonizationToCategory'
 
 import styles from "./components/shelf.css"
 
@@ -69,44 +70,52 @@ const RelatedProducts = ({
     }
   }, [productId, recommendation])
 
+
+  //Esse if esconde a shelf quando o produto tem harmonização, para que exiba somente a shelf de harmonização na pdp
+  if (checkValidHarmonization(productContext.product?.properties))
+    return null;
+
+
   if (!productId) {
     return null
   }
 
   return (
-    <Query
-      query={productRecommendationsQuery}
-      variables={variables}
-      partialRefetch
-      ssr={false}
-    >
-      {({ data, loading }) => {
-        if (!data) {
-          return null
-        }
-        const { productRecommendations = [] } = data
+    <section className={styles.shelf__harmonization__wrapper}>
+      <Query
+        query={productRecommendationsQuery}
+        variables={variables}
+        partialRefetch
+        ssr={false}
+      >
+        {({ data, loading }) => {
+          if (!data) {
+            return null
+          }
+          const { productRecommendations = [] } = data
 
-        const productListProps = {
-          products: hideOutOfStockItems
-            ? filterOutOfStock(productRecommendations)
-            : productRecommendations,
-          loading,
-          ...productList,
-          isMobile,
-          trackingId,
-        }
-        return (
-          <>
-            {productListProps.products.length > 0 && <h2 className={styles.product__shelf__title}>Produtos relacionados</h2>}
-            <div className={handles.relatedProducts}>
-              <ProductListProvider listName={trackingId}>
-                <ProductList {...productListProps} />
-              </ProductListProvider>
-            </div>
-          </>
-        )
-      }}
-    </Query>
+          const productListProps = {
+            products: hideOutOfStockItems
+              ? filterOutOfStock(productRecommendations)
+              : productRecommendations,
+            loading,
+            ...productList,
+            isMobile,
+            trackingId,
+          }
+          return (
+            <>
+              {productListProps.products.length > 0 && <h2 className={styles.product__shelf__title}>Produtos relacionados</h2>}
+              <div className={handles.relatedProducts}>
+                <ProductListProvider listName={trackingId}>
+                  <ProductList {...productListProps} />
+                </ProductListProvider>
+              </div>
+            </>
+          )
+        }}
+      </Query>
+    </section>
   )
 }
 
