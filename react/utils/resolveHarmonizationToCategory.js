@@ -1,7 +1,7 @@
 export default function harmonizationToCategory(harmonization) {
     const categoriesRelation = {
       "Comida Japonesa": null,
-      "Carnes": null,
+      "Carnes": "7/1424079932",
       "Massas": "7/1424079926",
       "Peixes": null,
       "Vegetarianos": null,
@@ -26,12 +26,12 @@ export default function harmonizationToCategory(harmonization) {
   }
 
 export function checkValidHarmonization(properties) {
-    if(!properties)
+    if(!properties?.length)
         return false
 
-    const [harmonizations] = properties.filter(property => property.name === 'Harmonização')
+    const [harmonizations] = properties.filter(property => property.name === 'Harmonização') || [];
     const categoryHarmonizations = harmonizations?.values?.map(value => harmonizationToCategory(value));
-    const filteredHarmonization = categoryHarmonizations.filter(value => value);
+    const filteredHarmonization = categoryHarmonizations?.filter(value => value);
 
     if(filteredHarmonization?.[0])
         return true

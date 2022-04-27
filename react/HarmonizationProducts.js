@@ -35,9 +35,9 @@ const HarmonizationProducts = ({
   const toBoolean = x => (typeof x === 'boolean' ? x : x === 'true');
 
   const productContext = useProduct()
-  const [harmonizations] = productContext.product?.properties?.filter(property => property.name === 'Harmonização')
+  const [harmonizations] = productContext.product?.properties?.filter(property => property.name === 'Harmonização') || [];
   const categoryHarmonizations = harmonizations?.values?.map(value => harmonizationToCategory(value));
-  const filteredHarmonizations = categoryHarmonizations.filter(value => value);
+  const filteredHarmonizations = categoryHarmonizations?.filter(value => value);
 
   let trackingId = rawTrackingId
 
