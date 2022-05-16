@@ -13,7 +13,6 @@ import productRecommendationsQuery from './queries/productRecommendations.gql'
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 import { filterOutOfStock } from './utils/filterOutOfStock'
-import { checkValidHarmonization } from './utils/resolveHarmonizationToCategory'
 
 import styles from "./components/shelf.css"
 
@@ -69,12 +68,6 @@ const RelatedProducts = ({
       type: recommendation,
     }
   }, [productId, recommendation])
-
-
-  //Esse if esconde a shelf quando o produto tem harmonização, para que exiba somente a shelf de harmonização na pdp
-  if (checkValidHarmonization(productContext.product?.properties))
-    return null;
-
 
   if (!productId) {
     return null

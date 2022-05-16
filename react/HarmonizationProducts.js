@@ -14,6 +14,7 @@ import { productListSchemaPropTypes } from './utils/propTypes'
 import { filterOutOfStock } from './utils/filterOutOfStock'
 import styles from './components/shelf.css'
 import harmonizationToCategory from './utils/resolveHarmonizationToCategory'
+import isExlusiveDelivery from './utils/exclusiveDelivery'
 
 const CSS_HANDLES = ['harmonizationProducts']
 
@@ -50,10 +51,15 @@ const HarmonizationProducts = ({
 
   if(!filteredHarmonizations || !filteredHarmonizations?.[0])
     return null
+
+  const adress = JSON.parse(localStorage.getItem("userAdress"))
   
   return (
     filteredHarmonizations.map(categoryHarmonization => {
       if (!categoryHarmonization)
+        return null;
+
+      if(isExlusiveDelivery(adress?.localidade, categoryHarmonization.id))
         return null;
 
       return (
