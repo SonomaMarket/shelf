@@ -29,6 +29,7 @@
 
 @media screen and (max-width: 600px){
   .product__shelf__title {
+    padding-left: 20.8px;
     font-size: 1.5rem;
     line-height: 2rem;
   }
