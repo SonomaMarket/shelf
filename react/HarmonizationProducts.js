@@ -59,6 +59,9 @@ const HarmonizationProducts = ({
       if (!categoryHarmonization)
         return null;
 
+      if(categoryHarmonization.name.toLowerCase() === "carnes" )
+        return null;
+
       if(isExlusiveDelivery(adress?.localidade, categoryHarmonization.id))
         return null;
 
